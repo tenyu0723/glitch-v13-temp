@@ -1,0 +1,21 @@
+{
+  "name": "glitch-discord-bot",
+  "version": "0.0.0",
+  "description": "A simple Node app built on Express, instantly up and running.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "moment": "^2.29.3",
+    "@keyv/sqlite": "^3.5.1",
+    "keyv": "^4.2.7",
+    "pify": "^5.0.0",
+    "discordjs-button-embed-pagination": "^4.0.2",
+    "util": "^0.12.4"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
