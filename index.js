@@ -43,7 +43,7 @@ if (process.env.DISCORD_BOT_TOKEN == undefined) {
 
 client.on('ready', async () => {
   const you = client.users.cache.get(ID)
-    client.user.setActivity(`${client.user.tag} | prefix=${prefix} | 製作者:${you.tag} | ${client.guilds.cache.size}servers | ${client.users.cache.size}members`, {
+    client.user.setActivity(`${client.user.username} | prefix=${prefix} | 製作者:${you.tag} | ${client.guilds.cache.size}servers | ${client.users.cache.size}members`, {
       type: 'PLAYING'
     });
     client.user.setStatus("idle");
