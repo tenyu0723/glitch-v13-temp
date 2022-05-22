@@ -3,6 +3,7 @@ const { Client, Intents, MessageEmbed, MessageActionRow, MessageButton } = requi
 const { Pagination } = require("discordjs-button-embed-pagination");
 const moment = require('moment');
 const Keyv = require('keyv');
+const maintenance = new Keyv(`sqlite://maintenance.sqlite`, { table: "maintenance" });
 const client = new Client({
   partials: ["CHANNEL"],
   intents: new Intents(32767),
@@ -27,13 +28,6 @@ const newbutton = (buttondata) => {
 const prefix = ""
 const cmd_list = []
 const json = require("./command.json")
-const clean = async (text) => {
-if (text && text.constructor.name == "Promise")
-  text = await text;
-if (typeof text !== "string")
-  text = require("util").inspect(text, { depth: 1 });
-  return text;
-}
 process.env.TZ = 'Asia/Tokyo'
 
 http
@@ -49,8 +43,8 @@ if (process.env.DISCORD_BOT_TOKEN == undefined) {
 }
 
 client.on('ready', async () => {
-  const kamui = client.users.cache.get(ID)
-    client.user.setActivity(`NONE | prefix=${prefix} | 製作者:${kamui.tag} | ${client.guilds.cache.size}servers | ${client.users.cache.size}members`, {
+  const you = client.users.cache.get(ID)
+    client.user.setActivity(`${client.user.tag} | prefix=${prefix} | 製作者:${you.tag} | ${client.guilds.cache.size}servers | ${client.users.cache.size}members`, {
       type: 'PLAYING'
     });
     client.user.setStatus("idle");
