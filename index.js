@@ -3,7 +3,6 @@ const { Client, Intents, MessageEmbed, MessageActionRow, MessageButton } = requi
 const { Pagination } = require("discordjs-button-embed-pagination");
 const moment = require('moment');
 const Keyv = require('keyv');
-const maintenance = new Keyv(`sqlite://maintenance.sqlite`, { table: "maintenance" });
 const client = new Client({
   partials: ["CHANNEL"],
   intents: new Intents(32767),
@@ -51,7 +50,7 @@ client.on('ready', async () => {
   console.log(`${client.user.tag} is ready!`);
   const embed = new MessageEmbed()
   .setTitle("起動しました！")
-  .setDescription(">>> ```diff\n+ Hello World!　　　　　``````diff\n+ 導入サーバー数:" + client.guilds.cache.size + "\n+ ユーザー数:" + client.users.cache.size +  "\n+ メンテナンス:" + await maintenance.get("maintenance") + "```" + moment().format("YYYY-MM-DD HH:mm:ss"))
+  .setDescription(">>> ```diff\n+ Hello World!　　　　　``````diff\n+ 導入サーバー数:" + client.guilds.cache.size + "\n+ ユーザー数:" + client.users.cache.size + "```" + moment().format("YYYY-MM-DD HH:mm:ss"))
   .setThumbnail(client.user.displayAvatarURL())
   .setColor("RANDOM")
   client.channels.cache.get(ID).send({ embeds:[embed] })
